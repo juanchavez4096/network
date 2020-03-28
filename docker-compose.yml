@@ -1,0 +1,46 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+
+version: '3.7'
+
+# Define services
+services:
+  # App backend service
+  app-server:
+    # Configuration for building the docker image for the backend service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081" # Forward the exposed port 8081 on the container to port 8081 on the host machine
+    restart: always
+    depends_on:
+      - db # This service depends on postgres. Start that first.
+    command: ["./wait-for-postgres.sh", "db", "python", "app.py"]
+    volumes:
+      - images-data:/var/lib/images/data
+    environment:
+      - file.upload-dir=/var/lib/images/data
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - backend
+
+  # Database Service (Postgresql)
+  db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017
+    volumes:
+      - db-data:/data/db
+    networks:
+      - backend
+
+# Volumes
+volumes:
+  db-data:
+  images-data:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  backend:

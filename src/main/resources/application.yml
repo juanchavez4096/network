@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: development
+  application:
+    name: network
+  # Security configuration
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 10MB
+      max-request-size: 10MB
+  mail:
+    host: smtp.gmail.com
+    username: email@example.com
+    password: password
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        smtp:
+          port: 587
+          auth: true
+          starttls:
+            enable: true
+            required: true
+# Logger configuration
+logging:
+  level:
+    org.springframework: ERROR
+    org.hibernate: off
+# Server configuration
+server:
+  port: ${port:8081}
+  
+
+
+## File Storage Properties
+# All files uploaded through the REST API will be stored in this directory
+file: 
+  upload-dir: /home/jchavez/uploads3
+
+
