@@ -5,16 +5,6 @@ spring:
     name: network
   # Security configuration
 
-
-  data:
-    mongodb:
-      authentication-database: admin
-      database: network
-      host: localhost
-      username: root
-      password: rootpassword
-      port: 27017
-
   servlet:
     multipart:
       enabled: true

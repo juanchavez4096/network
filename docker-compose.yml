@@ -20,7 +20,8 @@ services:
       - images-data:/var/lib/images/data
     environment:
       - file.upload-dir=/var/lib/images/data
-      - spring.data.mongodb.host=db
+      - spring.data.mongodb.uri=mongodb://root:rootpassword@db:27017/network
+      - spring.data.mongodb.database=network
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
       - backend
 

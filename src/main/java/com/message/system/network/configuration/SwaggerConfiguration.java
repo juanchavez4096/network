@@ -1,3 +1,8 @@
+/**
+ * Intelenz de Venezuela @author intelenz services com.intelenz.serviceinstance.services.config SwaggerConfiguration.java
+ * <p>
+ * 2:32:38 p. m. 4 oct. 2017
+ */
 package com.message.system.network.configuration;
 
 import org.springframework.context.annotation.Bean;
