@@ -6,18 +6,14 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
-
-@Document(collection = "user")
+@Document(collection = "messages")
 @Getter
 @Setter
 @NoArgsConstructor
-public class User {
+public class Message {
     @Id
-    private String userId;
-
-
-    private String name;
-    private Date creationDate;
-    private Date lastSignIn;
+    private String messageId;
+    private String message;
+    private String sender;
+    private String channelId;
 }
