@@ -21,6 +21,7 @@ public class MessageController {
     @PostMapping("save")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Message> postChat(@Valid @RequestBody Message chatMessage){
+        chatMessage.setMessageId(null);
         return messageRepository.save(chatMessage);
     }
     @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
