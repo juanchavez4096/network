@@ -37,7 +37,7 @@ public class MessageController {
 
         if (messageId != null && !messageId.isEmpty()){
             return messageRepository.findById(messageId)
-                    .flatMapMany(message -> messageRepository.findWithTailableCursorByChannelIdAndSendDateGreaterThanEqual(channelId, message.getSendDate())
+                    .flatMapMany(message -> messageRepository.findWithTailableCursorByChannelIdAndSendDateGreaterThan(channelId, message.getSendDate())
                             .map(m -> {
                                 try {
                                     return mapResponseDto(timezone, m);
