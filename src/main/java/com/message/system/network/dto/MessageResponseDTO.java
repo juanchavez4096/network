@@ -1,20 +1,15 @@
-package com.message.system.network.document;
+package com.message.system.network.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.OffsetDateTime;
 import java.util.Date;
 
-@Document(collection = "messages")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Message {
-    @Id
+public class MessageResponseDTO {
     private String messageId;
     private String message;
     private String sender;
