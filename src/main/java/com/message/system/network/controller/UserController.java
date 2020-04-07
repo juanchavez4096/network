@@ -1,7 +1,7 @@
 package com.message.system.network.controller;
 
 import com.message.system.network.document.User;
-import com.message.system.network.dto.UserDTO;
+import com.message.system.network.model.UserDTO;
 import com.message.system.network.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

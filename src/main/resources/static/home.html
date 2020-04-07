@@ -4,11 +4,17 @@
 	<meta charset="utf-8" />
 </head>
 <body>
+
+<form enctype="multipart/form-data" action="/api/photo/add" method="post">
+    <input id="image-file" name="fileParts" type="file" />
+    <input type="submit" value="subir" />
+</form>
+
 <script>
-    var source = new EventSource('https://message-system-network.herokuapp.com/api/message/stream?channelId=1');
+    /*var source = new EventSource('https://message-system-network.herokuapp.com/api/message/stream?channelId=1');
     source.onmessage = function(e) {
       document.body.innerHTML += e.data + '<br>';
-    };
+    };*/
   </script>
 </body>
 </html>

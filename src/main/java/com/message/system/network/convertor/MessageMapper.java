@@ -1,8 +1,8 @@
 package com.message.system.network.convertor;
 
 import com.message.system.network.document.Message;
-import com.message.system.network.dto.MessageRequestDTO;
-import com.message.system.network.dto.MessageResponseDTO;
+import com.message.system.network.model.MessageRequestDTO;
+import com.message.system.network.model.MessageResponseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

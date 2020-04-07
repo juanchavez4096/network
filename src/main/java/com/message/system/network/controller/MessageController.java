@@ -2,8 +2,8 @@ package com.message.system.network.controller;
 
 import com.message.system.network.convertor.MessageMapper;
 import com.message.system.network.document.Message;
-import com.message.system.network.dto.MessageRequestDTO;
-import com.message.system.network.dto.MessageResponseDTO;
+import com.message.system.network.model.MessageRequestDTO;
+import com.message.system.network.model.MessageResponseDTO;
 import com.message.system.network.repository.MessageRepository;
 import com.message.system.network.util.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;

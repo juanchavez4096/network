@@ -1,4 +1,4 @@
-package com.message.system.network.dto;
+package com.message.system.network.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
