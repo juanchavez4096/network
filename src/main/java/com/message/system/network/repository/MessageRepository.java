@@ -13,5 +13,5 @@ public interface MessageRepository extends ReactiveMongoRepository<Message, Stri
     Flux<Message> findWithTailableCursorByChannelId(String channelId);
 
     @Tailable
-    Flux<Message> findWithTailableCursorByChannelIdAndSendDateGreaterThan(String channelId, Date sendDate);
+    Flux<Message> findWithTailableCursorByChannelIdAndSendDateGreaterThanEqualAndMessageIdNot(String channelId, Date sendDate, String notMessageId);
 }
