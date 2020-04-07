@@ -54,20 +54,23 @@ public class PhotoController {
     private final ReactiveGridFsTemplate gridFsTemplate;
 
     @PostMapping(value = "add", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Mono<ResponseEntity<Photo>> upload(@RequestPart Mono<FilePart> fileParts) {
+    public Mono<ResponseEntity<Document>> upload(@RequestPart Mono<FilePart> fileParts, @RequestParam String userId) {
 
-        /*Document document = new Document();
-        document.append("userId",)*/
+        Document document = new Document();
+        document.append("userId", userId);
 
-        return fileParts
-                .flatMap(part -> this.gridFsTemplate.store(part.content(), part.filename()))
-                .map((id) -> ResponseEntity.ok().body(new Photo(id.toHexString())));
+        return this.gridFsTemplate.delete(Query.query(Criteria.where("metadata.userId").is(userId))).then(
+             fileParts
+                    .flatMap(part -> this.gridFsTemplate.store(part.content(), part.filename(), document))
+                    .map((id) -> ResponseEntity.ok().body(document))
+        );
+
     }
 
 
-    @GetMapping("{id}")
-    public Flux<Void> read(@PathVariable String id, ServerWebExchange exchange) {
-        return this.gridFsTemplate.findOne(Query.query(Criteria.where("_id").is(id)))
+    @GetMapping("{userId}")
+    public Flux<Void> read(@PathVariable String userId, ServerWebExchange exchange) {
+        return this.gridFsTemplate.findOne(Query.query(Criteria.where("metadata.userId").is(userId)))
                 .log()
                 .flatMap(gridFsTemplate::getResource)
                 .flatMapMany(r -> exchange.getResponse().writeWith(r.getDownloadStream()));
